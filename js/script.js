@@ -13,9 +13,13 @@ window.onload = function(){
 	});
 };
 
+var element = [];
+var counter;
+console.log("1 "+counter);
+
 function FindOnPage() {
   var inputText = document.getElementById("textId").value;
-  var element =  document.querySelectorAll(inputText);
+  element =  document.querySelectorAll(inputText);
   console.log(element);
   element[0].style.outline = "3px solid red";
   element[0].style.backgroundColor = "lightblue";
@@ -26,18 +30,17 @@ function FindOnPage() {
   return element;
 }
 
-function nextElement(element) {
-
-  console.log(element);
-  element[0].style.removeProperty("outline");
-  element[0].style.removeProperty("background-color");
+function nextElement(counter) {
+	if(counter === undefined) {
+		counter = 0;
+	}
+	console.log("2 "+counter);
+  element[counter].style.removeProperty("outline");
+  element[counter].style.removeProperty("background-color");
   
-  	element[1].style.outline = "3px solid red";
-  	element[1].style.backgroundColor = "lightblue"; 
-  	 
-}
-
-function counter() {
-	return 
+  	element[counter+1].style.outline = "3px solid red";
+  	element[counter+1].style.backgroundColor = "lightblue";
+  	counter =  counter + 2;
+  	console.log("3 "+counter);
 }
 
