@@ -108,38 +108,37 @@ function FirstChild() {
 
 
 function PreviousSibling() {
+  document.getElementsByClassName('selector-next')[0].setAttribute('disabled', 'disabled');
+  document.getElementsByClassName('selector-prev')[0].setAttribute('disabled', 'disabled');
   counter = prevCount(counter);
-  console.log("counter "+counter);
   var inputText;
   if(counter === -1){
     inputText = document.getElementById("textId").value;
     selectorNP =  document.querySelector(inputText);
     element[0].style.removeProperty("outline");
     element[0].style.removeProperty("background-color");
-    console.log("if "+ selectorNP);
   }
-
-  console.log("selector "+selectorNP);
-  
-  console.log(element[1]);
   selectorNP.style.removeProperty("outline");
   selectorNP.style.removeProperty("background-color");
   selectorNP = selectorNP.previousElementSibling;
-  console.log("next "+selectorNP);
-  console.log(counter);
-
   selectorNP.style.outline = "3px solid red";
   selectorNP.style.backgroundColor = "lightblue";
   textId = selectorNP;
   console.log(textId);
-  if(textId === null) {
-    document.getElementsByClassName('nav-left')[0].setAttribute('disabled', 'disabled');
-  }
+  
+    /*if(selectorNP !== null){
+      console.log(selectorNP);
+      document.getElementsByClassName("nav-left")[0].removeAttribute('disabled');
+    }
+    if(counter < 0){
+      document.getElementsByClassName("nav-left")[0].setAttribute('disabled', 'disabled');
+    }*/
 }
 
 function NextSibling() {
+  document.getElementsByClassName('selector-next')[0].setAttribute('disabled', 'disabled');
+  document.getElementsByClassName('selector-prev')[0].setAttribute('disabled', 'disabled');
   counter = count(counter);
-  console.log("counter "+counter);
   var inputText;
   if(counter-1 === 0){
     inputText = document.getElementById("textId").value;
@@ -148,18 +147,18 @@ function NextSibling() {
     element[0].style.removeProperty("background-color");
     console.log("if "+ selectorNP);
   } 
-  
-  console.log("selector "+selectorNP);
-  
-  console.log(element[1]);
   selectorNP.style.removeProperty("outline");
   selectorNP.style.removeProperty("background-color");
   selectorNP = selectorNP.nextElementSibling;
-  console.log("next "+selectorNP);
-  console.log(counter);
-
   selectorNP.style.outline = "3px solid red";
   selectorNP.style.backgroundColor = "lightblue";
   textId = selectorNP;
-  console.log(textId);
+  
+    /*if(selectorNP !== null){
+      console.log(selectorNP);
+      document.getElementsByClassName("nav-right")[0].removeAttribute('disabled');
+    }
+    if(counter > 0){
+      document.getElementsByClassName("nav-right")[0].setAttribute('disabled', 'disabled');
+    }*/
 }
