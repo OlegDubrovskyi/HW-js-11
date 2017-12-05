@@ -14,33 +14,97 @@ window.onload = function(){
 };
 
 var element = [];
-var counter;
-console.log("1 "+counter);
+var counter = 0;
+
+function count(counter) {
+     counter++;
+     return counter;
+  }
+
+function prevCount(counter) {
+     counter--;
+     return counter;
+  }
+
 
 function FindOnPage() {
   var inputText = document.getElementById("textId").value;
   element =  document.querySelectorAll(inputText);
-  console.log(element);
   element[0].style.outline = "3px solid red";
   element[0].style.backgroundColor = "lightblue";
   if(element !== undefined) {
   	document.getElementsByClassName('selector-next')[0].removeAttribute('disabled');
-  	document.getElementsByClassName('selector-prev')[0].removeAttribute('disabled');
   }
+  document.getElementsByClassName("nav-top")[0].removeAttribute('disabled');
+  document.getElementsByClassName("nav-bottom")[0].removeAttribute('disabled');
+  document.getElementsByClassName("nav-left")[0].removeAttribute('disabled');
+  document.getElementsByClassName("nav-right")[0].removeAttribute('disabled');
   return element;
 }
 
-function nextElement(counter) {
-	if(counter === undefined) {
-		counter = 0;
-	}
-	console.log("2 "+counter);
-  element[counter].style.removeProperty("outline");
-  element[counter].style.removeProperty("background-color");
-  
-  	element[counter+1].style.outline = "3px solid red";
-  	element[counter+1].style.backgroundColor = "lightblue";
-  	counter =  counter + 2;
-  	console.log("3 "+counter);
+function nextElement() {
+  counter = count(counter);
+  element[counter-1].style.removeProperty("outline");
+  element[counter-1].style.removeProperty("background-color");
+  element[counter].style.outline = "3px solid red";
+  element[counter].style.backgroundColor = "lightblue";
+  if(counter > 0 ){
+    document.getElementsByClassName('selector-prev')[0].removeAttribute('disabled');
+  }
+   if(counter === element.length-1){
+    document.getElementsByClassName('selector-next')[0].setAttribute('disabled', 'disabled');
+  } 	
 }
 
+function prevElement() {
+  counter = prevCount(counter);
+  console.log(counter);
+  element[counter+1].style.removeProperty("outline");
+  element[counter+1].style.removeProperty("background-color");
+  element[counter].style.outline = "3px solid red";
+  element[counter].style.backgroundColor = "lightblue";
+  if(counter === 0 ){
+    document.getElementsByClassName('selector-prev')[0].setAttribute('disabled', 'disabled');
+  }
+}
+
+function Paren() {
+  var inputText = document.getElementById("textId").value;
+  var selector =  document.querySelector(inputText);
+  element[counter].style.removeProperty("outline");
+  element[counter].style.removeProperty("background-color");
+  selector = selector.parentNode;
+  selector.style.outline = "3px solid red";
+  selector.style.backgroundColor = "lightblue";
+}
+
+function FirstChild() {
+  var inputText = document.getElementById("textId").value;
+  var selector =  document.querySelector(inputText);
+  element[counter].style.removeProperty("outline");
+  element[counter].style.removeProperty("background-color");
+  selector = selector.firstElementChild;
+  selector.style.outline = "3px solid red";
+  selector.style.backgroundColor = "lightblue";
+}
+
+
+function PreviousSibling() {
+  var inputText = document.getElementById("textId").value;
+  var selector =  document.querySelector(inputText);
+  element[counter].style.removeProperty("outline");
+  element[counter].style.removeProperty("background-color");
+  selector = selector.previousElementSibling;
+  selector.style.outline = "3px solid red";
+  selector.style.backgroundColor = "lightblue";
+}
+
+function NextSibling() {
+  var inputText = document.getElementById("textId").value;
+  var selector =  document.querySelector(inputText);
+  element[counter].style.removeProperty("outline");
+  element[counter].style.removeProperty("background-color");
+  selector = selector.nextElementSibling;
+  selector.style.outline = "3px solid red";
+  selector.style.backgroundColor = "lightblue";
+}

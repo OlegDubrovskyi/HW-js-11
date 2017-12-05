@@ -58,19 +58,19 @@
 		<input class="selector" id="textId" placeholder="valid CSS selector" type="text"/>
 	</h3>
     <button onclick = "FindOnPage('selector')" class="selector-find">Find</button>
-    <button onclick = "nextElement(counter)" class="selector-next"
+    <button onclick = "nextElement()" class="selector-next"
 			disabled="disabled">Next</button>
-    <button onclick = "prevElement(counter)" class="selector-prev"
+    <button onclick = "prevElement()" class="selector-prev"
 			disabled="disabled">Previous</button>
     <hr/>
     <h3>DOM tree navigation:</h3>
-    <button class="nav-top"
+    <button onclick="Paren('selector')" class="nav-top"
 			disabled="disabled">Paren</button><br/>
-    <button class="nav-bottom"
+    <button onclick="FirstChild('selector')" class="nav-bottom"
 			disabled="disabled">First child</button><br/>
-    <button class="nav-left"
+    <button onclick="PreviousSibling('selector')" class="nav-left"
 			disabled="disabled">Previous sibling</button><br/>
-    <button class="nav-right"
+    <button onclick="NextSibling('selector')" class="nav-right"
 			disabled="disabled">Next sibling</button><br/>
 	<hr/>
     <button class="change-theme">Change theme</button>
