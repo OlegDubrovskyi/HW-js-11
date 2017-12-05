@@ -89,8 +89,8 @@ function prevElement() {
 function Paren() {
   var inputText = document.getElementById("textId").value;
   var selector =  document.querySelector(inputText);
-  element[counter].style.removeProperty("outline");
-  element[counter].style.removeProperty("background-color");
+  element[0].style.removeProperty("outline");
+  element[0].style.removeProperty("background-color");
   selector = selector.parentNode;
   selector.style.outline = "3px solid red";
   selector.style.backgroundColor = "lightblue";
