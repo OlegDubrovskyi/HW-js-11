@@ -15,6 +15,8 @@ window.onload = function(){
 
 var element = [];
 var counter = 0;
+var selectorNP;
+var textId;
 
 function count(counter) {
      counter++;
@@ -48,7 +50,7 @@ function isEnable(inputText) {
 
 
 function FindOnPage() {
-  var inputText = document.getElementById("textId").value;
+  var inputText = document.getElementById("textId").value.trim();
   element =  document.querySelectorAll(inputText);
   element[0].style.outline = "3px solid red";
   element[0].style.backgroundColor = "lightblue";
@@ -106,22 +108,58 @@ function FirstChild() {
 
 
 function PreviousSibling() {
-  var inputText = document.getElementById("textId").value;
-  var selector =  document.querySelector(inputText);
-  element[counter].style.removeProperty("outline");
-  element[counter].style.removeProperty("background-color");
-  selector = selector.previousElementSibling;
-  selector.style.outline = "3px solid red";
-  selector.style.backgroundColor = "lightblue";
+  counter = prevCount(counter);
+  console.log("counter "+counter);
+  var inputText;
+  if(counter === -1){
+    inputText = document.getElementById("textId").value;
+    selectorNP =  document.querySelector(inputText);
+    element[0].style.removeProperty("outline");
+    element[0].style.removeProperty("background-color");
+    console.log("if "+ selectorNP);
+  }
+
+  console.log("selector "+selectorNP);
+  
+  console.log(element[1]);
+  selectorNP.style.removeProperty("outline");
+  selectorNP.style.removeProperty("background-color");
+  selectorNP = selectorNP.previousElementSibling;
+  console.log("next "+selectorNP);
+  console.log(counter);
+
+  selectorNP.style.outline = "3px solid red";
+  selectorNP.style.backgroundColor = "lightblue";
+  textId = selectorNP;
+  console.log(textId);
+  if(textId === null) {
+    document.getElementsByClassName('nav-left')[0].setAttribute('disabled', 'disabled');
+  }
 }
 
 function NextSibling() {
+  counter = count(counter);
+  console.log("counter "+counter);
+  var inputText;
+  if(counter-1 === 0){
+    inputText = document.getElementById("textId").value;
+    selectorNP =  document.querySelector(inputText);
+    element[0].style.removeProperty("outline");
+    element[0].style.removeProperty("background-color");
+    console.log("if "+ selectorNP);
+  } 
   
-  var inputText = document.getElementById("textId").value;
-  var selector =  document.querySelector(inputText);
-  element[counter].style.removeProperty("outline");
-  element[counter].style.removeProperty("background-color");
-  selector = selector.nextElementSibling;
-  selector.style.outline = "3px solid red";
-  selector.style.backgroundColor = "lightblue";
+  console.log("selector "+selectorNP);
+  
+  console.log(element[1]);
+  selectorNP.style.removeProperty("outline");
+  selectorNP.style.removeProperty("background-color");
+  selectorNP = selectorNP.nextElementSibling;
+  console.log("next "+selectorNP);
+  console.log(counter);
+
+  selectorNP.style.outline = "3px solid red";
+  selectorNP.style.backgroundColor = "lightblue";
+  textId = selectorNP;
+  console.log(textId);
 }
