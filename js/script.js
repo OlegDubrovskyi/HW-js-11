@@ -84,6 +84,9 @@ function prevElement() {
   if(counter === 0 ){
     document.getElementsByClassName('selector-prev')[0].setAttribute('disabled', 'disabled');
   }
+  if(counter < element.length-1){
+    document.getElementsByClassName('selector-next')[0].removeAttribute('disabled');
+  }
 }
 
 function Paren() {
@@ -124,15 +127,14 @@ function PreviousSibling() {
   selectorNP.style.outline = "3px solid red";
   selectorNP.style.backgroundColor = "lightblue";
   textId = selectorNP;
-  console.log(textId);
-  
-    /*if(selectorNP !== null){
+    if(selectorNP.previousElementSibling === null){
       console.log(selectorNP);
-      document.getElementsByClassName("nav-left")[0].removeAttribute('disabled');
-    }
-    if(counter < 0){
       document.getElementsByClassName("nav-left")[0].setAttribute('disabled', 'disabled');
-    }*/
+    }
+    if(typeof(selectorNP.previousElementSibling) == "object"){
+      console.log(selectorNP);
+      document.getElementsByClassName("nav-right")[0].removeAttribute('disabled');
+    }
 }
 
 function NextSibling() {
@@ -145,7 +147,6 @@ function NextSibling() {
     selectorNP =  document.querySelector(inputText);
     element[0].style.removeProperty("outline");
     element[0].style.removeProperty("background-color");
-    console.log("if "+ selectorNP);
   } 
   selectorNP.style.removeProperty("outline");
   selectorNP.style.removeProperty("background-color");
@@ -153,12 +154,11 @@ function NextSibling() {
   selectorNP.style.outline = "3px solid red";
   selectorNP.style.backgroundColor = "lightblue";
   textId = selectorNP;
-  
-    /*if(selectorNP !== null){
-      console.log(selectorNP);
-      document.getElementsByClassName("nav-right")[0].removeAttribute('disabled');
-    }
-    if(counter > 0){
+    if(selectorNP.nextElementSibling === null){
       document.getElementsByClassName("nav-right")[0].setAttribute('disabled', 'disabled');
-    }*/
+    }
+    if(typeof(selectorNP.nextElementSibling) == "object"){
+    	console.log(selectorNP);
+      document.getElementsByClassName("nav-left")[0].removeAttribute('disabled');
+    }
 }
