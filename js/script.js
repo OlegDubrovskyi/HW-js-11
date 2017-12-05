@@ -27,6 +27,26 @@ function prevCount(counter) {
   }
 
 
+function isEnable(inputText) {
+  var selector =  document.querySelector(inputText);
+  
+    if(selector.parentNode !== null){
+      document.getElementsByClassName("nav-top")[0].removeAttribute('disabled');
+    }
+   
+    if(selector.firstElementChild !== null){
+      console.log(selector.firstElementChild);
+      document.getElementsByClassName("nav-bottom")[0].removeAttribute('disabled');
+    }
+    if(selector.previousElementSibling !== null){
+      document.getElementsByClassName("nav-left")[0].removeAttribute('disabled');
+    }
+    if(selector.nextElementSibling !== null){
+      document.getElementsByClassName("nav-right")[0].removeAttribute('disabled');
+    }
+}
+
+
 function FindOnPage() {
   var inputText = document.getElementById("textId").value;
   element =  document.querySelectorAll(inputText);
@@ -35,10 +55,7 @@ function FindOnPage() {
   if(element !== undefined) {
   	document.getElementsByClassName('selector-next')[0].removeAttribute('disabled');
   }
-  document.getElementsByClassName("nav-top")[0].removeAttribute('disabled');
-  document.getElementsByClassName("nav-bottom")[0].removeAttribute('disabled');
-  document.getElementsByClassName("nav-left")[0].removeAttribute('disabled');
-  document.getElementsByClassName("nav-right")[0].removeAttribute('disabled');
+  isEnable(inputText);
   return element;
 }
 
@@ -58,7 +75,6 @@ function nextElement() {
 
 function prevElement() {
   counter = prevCount(counter);
-  console.log(counter);
   element[counter+1].style.removeProperty("outline");
   element[counter+1].style.removeProperty("background-color");
   element[counter].style.outline = "3px solid red";
@@ -100,6 +116,7 @@ function PreviousSibling() {
 }
 
 function NextSibling() {
+  
   var inputText = document.getElementById("textId").value;
   var selector =  document.querySelector(inputText);
   element[counter].style.removeProperty("outline");
