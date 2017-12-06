@@ -28,10 +28,8 @@ function prevCount(counter) {
      return counter;
   }
 
-
 function isEnable(inputText) {
   var selector =  document.querySelector(inputText);
-  
     if(selector.parentNode !== null){
       document.getElementsByClassName("nav-top")[0].removeAttribute('disabled');
     }
@@ -48,10 +46,24 @@ function isEnable(inputText) {
     }
 }
 
+function isDisableDomNavigation() {
+  document.getElementsByClassName("nav-top")[0].setAttribute('disabled', 'disabled');
+  document.getElementsByClassName("nav-bottom")[0].setAttribute('disabled', 'disabled');
+  document.getElementsByClassName("nav-left")[0].setAttribute('disabled', 'disabled');
+  document.getElementsByClassName("nav-right")[0].setAttribute('disabled', 'disabled');
+}
+
+function isDisableNextPrevious() {
+  document.getElementsByClassName("selector-prev")[0].setAttribute('disabled', 'disabled');
+  document.getElementsByClassName("selector-next")[0].setAttribute('disabled', 'disabled');
+}
 
 function FindOnPage() {
   var inputText = document.getElementById("textId").value.trim();
   element =  document.querySelectorAll(inputText);
+  if(element.length === 0){
+      alert("No search results. Please try again.");
+  }
   element[0].style.outline = "3px solid red";
   element[0].style.backgroundColor = "lightblue";
   if(element !== undefined) {
@@ -62,6 +74,7 @@ function FindOnPage() {
 }
 
 function nextElement() {
+  isDisableDomNavigation();
   counter = count(counter);
   element[counter-1].style.removeProperty("outline");
   element[counter-1].style.removeProperty("background-color");
@@ -76,6 +89,7 @@ function nextElement() {
 }
 
 function prevElement() {
+  isDisableDomNavigation();
   counter = prevCount(counter);
   element[counter+1].style.removeProperty("outline");
   element[counter+1].style.removeProperty("background-color");
@@ -90,6 +104,7 @@ function prevElement() {
 }
 
 function Paren() {
+  isDisableNextPrevious();
   var inputText = document.getElementById("textId").value;
   var selector =  document.querySelector(inputText);
   element[0].style.removeProperty("outline");
@@ -100,6 +115,7 @@ function Paren() {
 }
 
 function FirstChild() {
+  isDisableNextPrevious();
   var inputText = document.getElementById("textId").value;
   var selector =  document.querySelector(inputText);
   element[counter].style.removeProperty("outline");
@@ -109,8 +125,8 @@ function FirstChild() {
   selector.style.backgroundColor = "lightblue";
 }
 
-
 function PreviousSibling() {
+  isDisableNextPrevious();
   document.getElementsByClassName('selector-next')[0].setAttribute('disabled', 'disabled');
   document.getElementsByClassName('selector-prev')[0].setAttribute('disabled', 'disabled');
   counter = prevCount(counter);
@@ -138,6 +154,7 @@ function PreviousSibling() {
 }
 
 function NextSibling() {
+  isDisableNextPrevious();
   document.getElementsByClassName('selector-next')[0].setAttribute('disabled', 'disabled');
   document.getElementsByClassName('selector-prev')[0].setAttribute('disabled', 'disabled');
   counter = count(counter);
